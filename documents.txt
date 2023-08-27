@@ -1,0 +1,156 @@
+Hash Function
+A hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are usually used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing.
+
+Hash functions and their associated hash tables are used in data storage and retrieval applications to access data in a small and nearly constant time per retrieval, and require an amount of storage space only fractionally greater than the total space required for the data or records themselves. Hashing is a computationally and storage space efficient form of data access which avoids the non-linear access time of ordered and unordered lists and structured trees.
+
+
+Important properties:
+Each hash is unique but always repeatable
+The word 'cat' will hash to something that no other word hashes too, but it will always hash to the same thing.
+
+The function is 'one way'.
+If you are given the value of what 'cat' hashes too but you didn't know what made it, you would never be able to find out that 'cat' was the original word.
+
+There are many different hash functions such as SHA-1 and SHA-2.
+
+
+How Hash Table Works
+Consider a list of items:
+
+mylist = ["apple", "banana", "pear", "orange", "mango"]
+To find an item in the list, one solution is brute force such as linear search which would take a very long time for a very big array.
+
+But what if you know the index number of that element? You can look up the value very quick. The look up time is in face independent of the array size or the value position in the array.
+
+But how can you know which index contains the value?
+
+Answer: Each index can be calculated using the value itself so that the index number is in some way related to the data.
+
+
+Collisions
+You've seen how to load up a hash table with data that very conveniently didn't cause any problems. Needless to say, that was unrealistic. Sometimes if you apply a hash function to 2 different keys, it generates the same index number for both. This is known as collision.
+
+Let's try the previous example but this time with a different set of data:
+
+["Mia", "Tim", "Bea", "Zoe", "Sue", "Len", "Moe", "Lou", "Rae", "Max", "Tod"]
+
+names = ["Mia", "Tim", "Bea", "Zoe", "Sue", "Len", "Moe", "Lou", "Rae", "Max", "Tod"]
+
+print(f'{"Name":10} {"Hash Value"}')
+print('-'*25)
+for name in names:
+    index = calc_hash(name, len(names))
+    print(f'{name:10} {index}')
+
+    Name       Hash Value
+-------------------------
+Mia        4
+Tim        1
+Bea        0
+Zoe        5
+Sue        4
+Len        1
+Moe        3
+Lou        7
+Rae        5
+Max        8
+Tod        9
+
+Open Addressing
+[_0_, _1_, _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+[_0_, "Tim", _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", "Zoe", _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", _3_, "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_]
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", "Max", _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", "Max", "Tod"] #Collision
+Resolving a colllision by placing an item somewhere other than it's calculated address is called Open Addressing because every location is open to any item. Open addressing can use a variety of techniques to decide where to place an item that doesn't go where it should.
+
+This particular open addressing techniques used above is called linear probing. If the calculated address is occupied, then a liner search is used to find the next available slot. If it goes to the end of the array and still does not find an empty space, it may cycle around to the beginning of the array and continue searching from there.
+
+With the presence of collision, finding an item may need linear probing too, that is linear search.
+
+One way to avoid collision is to make the array addresses biger that the total amount of data you're expecting, perhaps such that only 70% of the hash table is ever occupied.
+
+ 
+
+Note: If the hash table is implemented as a resizable dynamic data structure, it could be made to increase in size automatically when the load factor reaches a certain threshold.Name       Hash Value
+-------------------------
+Mia        4
+Tim        1
+Bea        0
+Zoe        5
+Sue        4
+Len        1
+Moe        3
+Lou        7
+Rae        5
+Max        8
+Tod        9
+
+Open Addressing
+[_0_, _1_, _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+[_0_, "Tim", _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", "Zoe", _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", _3_, "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_]
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", "Max", _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", "Max", "Tod"] #Collision
+Resolving a colllision by placing an item somewhere other than it's calculated address is called Open Addressing because every location is open to any item. Open addressing can use a variety of techniques to decide where to place an item that doesn't go where it should.
+
+This particular open addressing techniques used above is called linear probing. If the calculated address is occupied, then a liner search is used to find the next available slot. If it goes to the end of the array and still does not find an empty space, it may cycle around to the beginning of the array and continue searching from there.
+
+With the presence of collision, finding an item may need linear probing too, that is linear search.
+
+One way to avoid collision is to make the array addresses biger that the total amount of data you're expecting, perhaps such that only 70% of the hash table is ever occupied.
+
+ 
+
+Note: If the hash table is implemented as a resizable dynamic data structure, it could be made to increase in size automatically when the load factor reaches a certain threshold.Name       Hash Value
+-------------------------
+Mia        4
+Tim        1
+Bea        0
+Zoe        5
+Sue        4
+Len        1
+Moe        3
+Lou        7
+Rae        5
+Max        8
+Tod        9
+
+Open Addressing
+[_0_, _1_, _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+[_0_, "Tim", _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", _5_, _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", "Zoe", _6_, _7_, _8_, _9_, _10_]
+["Bea", "Tim", _2_, _3_, "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", _3_, "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", _7_, _8_, _9_, _10_]
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", _8_, _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", _9_, _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", "Max", _10_] #Collision
+["Bea", "Tim", "Len", "Moe", "Mia", "Zoe", "Sue", Lou", "Rae", "Max", "Tod"] #Collision
+Resolving a colllision by placing an item somewhere other than it's calculated address is called Open Addressing because every location is open to any item. Open addressing can use a variety of techniques to decide where to place an item that doesn't go where it should.
+
+This particular open addressing techniques used above is called linear probing. If the calculated address is occupied, then a liner search is used to find the next available slot. If it goes to the end of the array and still does not find an empty space, it may cycle around to the beginning of the array and continue searching from there.
+
+With the presence of collision, finding an item may need linear probing too, that is linear search.
+
+One way to avoid collision is to make the array addresses biger that the total amount of data you're expecting, perhaps such that only 70% of the hash table is ever occupied.
+
+ 
+
+Note: If the hash table is implemented as a resizable dynamic data structure, it could be made to increase in size automatically when the load factor reaches a certain threshold.
+
+for more details read :
+https://github.com/pytopia/Python/blob/main/Python/01.%20Basics/10%20Under%20the%20Hood%2C%20Dictionary%20and%20Set.ipynb.ipynb
