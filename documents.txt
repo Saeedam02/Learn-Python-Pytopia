@@ -154,3 +154,9 @@ Note: If the hash table is implemented as a resizable dynamic data structure, it
 
 for more details read :
 https://github.com/pytopia/Python/blob/main/Python/01.%20Basics/10%20Under%20the%20Hood%2C%20Dictionary%20and%20Set.ipynb.ipynb
+
+
+
+
+there is a library in python named : Watchedog /watchdog.events that can be used for observing somewhere.
+
