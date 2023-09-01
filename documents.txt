@@ -196,6 +196,8 @@ list(final_prices)
 [1.1772000000000002, 25.4448, 62.467200000000005, 4.9248, 7.322400000000001]
 Here, you have an iterable txns and a function get_price_with_tax(). You pass both of these arguments to map(), and store the resulting object in final_prices. You can easily convert this map object into a list using list().
 
+*************************
+
 Using List Comprehensions
 List comprehensions are a third way of making lists. With this elegant approach, you could rewrite the for loop from the first example in just a single line of code:
 
