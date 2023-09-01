@@ -3,11 +3,11 @@
 Name_list=list()
 
 Options={
-    1: 'Quit',
-    2: 'Check if I know You',
-    3: 'Introduce Yourself to me',
-    4: 'Make me forgot you',
-    5: 'Print the list of people Iknow',
+    0: 'Quit',
+    1: 'Check if I know You',
+    2: 'Introduce Yourself to me',
+    3: 'Make me forgot you',
+    4: 'Print the list of people Iknow',
     }
 
 Options_str='\n'.join([f'{key}- {value}' for key,value in Options.items()])
@@ -46,3 +46,6 @@ while True:
             # We know you already
             Name_list.remove(username)
             print(">>>now I don't know you!\n")
+    elif Option == 4:
+        print('People I know : ')
+        print(Name_list,'\n')
