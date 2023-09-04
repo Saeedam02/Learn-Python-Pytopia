@@ -17,3 +17,28 @@ def print_age(**kwargs):
         print(f'{name:10} is {age:3} years old')
 
 print_age(**d)
+
+
+######################### difference between * and *ignore 
+
+## with *ignore
+def operator(x, y, *ignore, op='+'):
+    if op == '+' :
+        return x + y
+    elif op == '-':
+        return x - y
+    elif op == '/':
+        return x / y 
+    
+operator(3, 6, 5, 7, op='-')  # by using *ignore we can give positional argments more than defined ones and python put them in ignore
+
+## with *
+def operator(x, y, *, op='+'):
+    if op == '+' :
+        return x + y
+    elif op == '-':
+        return x - y
+    elif op == '/':
+        return x / y 
+    
+operator(3, 6, 5, 7, op='-') # by using * we can't give positional argments more than defined ones
