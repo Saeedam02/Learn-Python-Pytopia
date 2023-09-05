@@ -1,7 +1,6 @@
 # First example: get Frequency of unique elements in an iterable
+
 my_str = 'abdjcnkdakmdnkp'
-
-
 char_freq = {}
 # approach 1 
 for char in my_str:
@@ -69,3 +68,43 @@ def make_sentense(subjects: Iterable[str], verbs: Iterable[str], objects:Iterabl
     return sentences_2
 
 make_sentense(subjects,verbs,objects)
+
+#### Third example : Find Distance
+
+# approach 1
+
+moves = []
+while True:
+    move = input(' Enter robot move: ').upper()
+    if move == 'END':
+        break
+
+    direction , displace = move.split(' ')
+    displace = float(displace)
+    if direction not in ['RIGHT', 'LEFT', 'UP', 'DOWN']:
+        print('Invalid direction, please try again.options are RIGHT, LEFT, UP and DOWN')
+        
+    moves.append(move)
+
+from typing import List
+def robot_movment(moves: List[str]) ->float :
+    """
+    Calculate the distance having robot moves in UP, DOWN, RIGHT and LEFT directions.
+    :param moves: List of robot direction.
+    :returns: Final robot distance from origin.
+    """
+    # initial rbot position
+    X , Y = 0, 0
+    for move in moves :
+       
+        if direction == 'UP':
+            Y += displace
+        elif direction == 'DOWN':
+            Y -= displace
+        elif direction == 'RIGHT':
+            X += displace
+        else:
+            X -= displace
+    dist = (X ** 2 + Y ** 2 ) ** 0.5
+    return dist
+robot_movment(moves)
