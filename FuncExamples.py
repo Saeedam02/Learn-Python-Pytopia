@@ -113,7 +113,7 @@ robot_movment(moves)
 
 def is_valid_pass(password: str) -> bool :
     """
-    Cheack if a password is valid based on rules.
+    Check if a password is valid based on rules.
     Rules:
     - Password length must be greater than.
     - Password can't be just numbers.
@@ -122,9 +122,9 @@ def is_valid_pass(password: str) -> bool :
     :param password: User password
     :returns: Returs True if password is a valid one.
     Example:
-    >>> 'abc'
+    >>> is_valid_pass('abc')
     False
-    >>> 'Abcd1254'
+    >>> is_valid_pass('Abcd1254')
     True
     """
     
@@ -140,10 +140,46 @@ def is_valid_pass(password: str) -> bool :
 def is_valid_username(username: str) :
     return len(username) >= 4 # it returns True if the len of username is greater or equal to 4
 
-def cheack_validation(**kwargs) :
+def cheack_validation(**kwargs) ->List:
+    """"
+    Check if pairs of username and passwords are valid.
+
+    :param kwargs: Dictionary of username password pairs.
+    :returns: Valid usernames
+
+    """
     valid_usernames=[]
     for username, password in kwargs.items() :
         if is_valid_username(username) and is_valid_pass(password):
             valid_usernames.append(username)
 
     return valid_usernames
+
+
+
+#### Fifth : Find pangram
+
+import string
+
+def is_pangram(sentence: str) -> bool :
+    """
+    Check if a sentence is a pangram.
+    A pangram is a sentence that contains all the letters of English Alphabets.
+
+    :param sentence: Input sentence to check.
+    :returns: If sentence is a pangram.
+    
+    Example:
+    >>> is_pangram('The bigger you dream, the richer you become.')
+    False
+    """
+
+    alphabets = set(string.ascii_lowercase)
+    for char in alphabets:
+        if char.lower() in alphabets:
+            alphabets.remove(char.lower())
+
+    if len(alphabets) !=0 :
+        return False
+    else:
+        return True    
