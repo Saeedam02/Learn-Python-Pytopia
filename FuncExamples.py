@@ -108,3 +108,42 @@ def robot_movment(moves: List[str]) ->float :
     dist = (X ** 2 + Y ** 2 ) ** 0.5
     return dist
 robot_movment(moves)
+
+############## Fourth Example: cheack validation
+
+def is_valid_pass(password: str) -> bool :
+    """
+    Cheack if a password is valid based on rules.
+    Rules:
+    - Password length must be greater than.
+    - Password can't be just numbers.
+    - Password can't be all in lower case.
+
+    :param password: User password
+    :returns: Returs True if password is a valid one.
+    Example:
+    >>> 'abc'
+    False
+    >>> 'Abcd1254'
+    True
+    """
+    
+    if (
+        len(password) < 6 
+        or password.isdigit() 
+        or password.lower() == password
+    ) : 
+        return False
+
+    return True
+
+def is_valid_username(username: str) :
+    return len(username) >= 4 # it returns True if the len of username is greater or equal to 4
+
+def cheack_validation(**kwargs) :
+    valid_usernames=[]
+    for username, password in kwargs.items() :
+        if is_valid_username(username) and is_valid_pass(password):
+            valid_usernames.append(username)
+
+    return valid_usernames
