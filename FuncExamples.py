@@ -111,7 +111,7 @@ robot_movment(moves)
 
 ############## Fourth Example: cheack validation
 
-def is_valid_pass(password: str) -> bool :
+def is_valid_pass(password: str) -> bool 
     """
     Check if a password is valid based on rules.
     Rules:
@@ -183,3 +183,41 @@ def is_pangram(sentence: str) -> bool :
         return False
     else:
         return True    
+    
+
+######### Sixth Example: Find Shortest and Longest words
+
+sentence = ' Python, which was initially developed by Guidi van Rossum and made available to the public in 1991 is currently one of the most widely used general-purpose programming languages.'
+sentence = ''.join(filter(lambda char: char not in string.punctuation, sentence))
+words = sentence.split()
+
+#approach 1
+
+smallest_word = words[0]
+longest_word = words[0]
+for word in words :
+    if len(word) < len(smallest_word) :
+        smallest_word = word
+    if len(word) > len(longest_word) :
+        longest_word = word
+
+# approach 2
+
+length = list(map(len , words))
+smallest = min(length)
+longest = max(length)
+smallest_word = words[smallest]
+longest_word = words[longest]
+
+# approach 3
+def shortest_longest_words(sentence : str) -> tuple:
+    """
+    Find Shortest and Longest words from a sentence
+
+    :param sentence: Input sentence to find its shortest and longest words.
+    :returns: Shortest and Longest words.
+    """
+    words = sentence.split()
+    longest_word = max(words , key = lambda w: len(w))
+    smallest_word = min(words , key = lambda w: len(w)) 
+    return shortest_longest_words, longest_word
