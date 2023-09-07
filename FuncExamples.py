@@ -221,3 +221,24 @@ def shortest_longest_words(sentence : str) -> tuple:
     longest_word = max(words , key = lambda w: len(w))
     smallest_word = min(words , key = lambda w: len(w)) 
     return shortest_longest_words, longest_word
+
+########## seventh Example: Find triple of numbers
+
+# approach 1
+
+def triple(mylist: list)-> list:
+    """ 
+    Find the triple of numbers.
+
+    :param mylist: Input list to find its numbers triple.
+    :returns: The list of numbers triple.
+
+    Example:
+    >>> [1,2,3]
+    [3,6,9]
+    """
+    triple = []
+    for num in mylist:
+        triple.append(num * 3)
+
+    return triple
