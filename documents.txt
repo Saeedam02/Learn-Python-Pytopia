@@ -217,4 +217,8 @@ Because the expression requirement is so flexible, a list comprehension in Pytho
 for more details take a look at :
 https://github.com/pytopia/Python/blob/main/Python/01.%20Basics/15%20List%20Comprehension.ipynb
 
+################## programming Paradims
+for this section, read from:
+https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/01%20Programming%20Paradigms.ipynb
+
 
