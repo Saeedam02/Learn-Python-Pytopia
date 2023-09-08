@@ -116,3 +116,44 @@ class Rectangle(Shape):
 class Square(Rectangle):
     def __init__(self, length, color=None):
         super(Square, self).__init__(length, length, color) 
+class Cube(Square):
+
+    def area(self):
+        raise AttributeError('Cube has no attribute named area')
+    
+    def perimeter(self):
+        raise AttributeError('Cube has no attribute named perimeter')
+    
+    def surface_area(self):
+        face_area = super().area()
+        return face_area * 6
+    
+    def volume(self):
+        face_area = super().area()
+        return face_area * self.length
+###############################
+## isinstance and issubclass ##
+###############################
+
+c = Cube(3)
+# isinstance
+print(isinstance(c, Square))
+print(isinstance(c, Rectangle))
+print(isinstance(c, Circle))
+
+#issubclass
+print(issubclass(Cube, Square))
+print(issubclass(Rectangle, Shape))
+
+# Note that all class are a subclass of Object class
+print(issubclass(Cube, object))
+
+# Extra information
+print(issubclass(type, object))
+print(isinstance(object, type))
+
+#########################
+## Multiple Inheritance##
+#########################
+# this kind of inheritance is very complex and we need to try avoid using this as much as possible
+ 
