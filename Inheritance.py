@@ -1,4 +1,6 @@
-# single inheritance
+########################
+## single inheritance ##
+########################
 
 class Rectangle:
     def __init__(self, length, width) -> None:
@@ -44,12 +46,21 @@ class Square(Rectangle):
         super(Square, self).__init__(length, length) 
         # with super, we don't need to use self in init function. becouse super sends object to function automatically
 
-
-# Multi level inheritance
+############################
+## Multi level inheritance##
+############################
 
 class Cube(Square):
     # the init function is same as square so it isn't necessary to over write it.
 
+    # cube has no attribute named area and perimeter so we need to raise error when someone call them
+
+    def area(self):
+        raise AttributeError('Cube has no attribute named area')
+    
+    def perimeter(self):
+        raise AttributeError('Cube has no attribute named perimeter')
+    
     def surface_area(self):
         face_area = super().area()
         return face_area * 6
@@ -59,7 +70,49 @@ class Cube(Square):
         return face_area * self.length
     
 
+#############################
+## Hierarchical Inheritance##
+#############################
 
 
+#           shape
+#         /      \
+#     Retangle    circle
+#       /
+#    Square
+#     /
+#   Cube
+
+class Shape:
+    def __init__(self, color=None):
+        self.color = color
+class Circle(Shape):
+    def __init__(self, radius, color=None) :
+        super().__init__(color)
+        self.radius = radius
+
+    def perimeter(self):
+        return self.radius * 2 * 3.14
+    
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+c = Circle(3, "Red")
+print(c.area())
+
+class Rectangle(Shape):
+    def __init__(self, length, width, color=None):
+        super().__init__(color)
+        self.length = length
+        self.width = width
+        
+    def area(self):
+        return self.length + (2 * self.width)
+    
+    def perimeter(self):
+        return 2 * self.length + 2 * self.width
     
 
+class Square(Rectangle):
+    def __init__(self, length, color=None):
+        super(Square, self).__init__(length, length, color) 
