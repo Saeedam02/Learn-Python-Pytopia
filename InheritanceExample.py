@@ -23,3 +23,46 @@ class Bus(Vehicle):
     
 bus = Bus(100, 120, 60)
 print(isinstance(v, Vehicle))
+
+
+#### Example 2: Train
+
+class Train:
+    def __init__(
+            self,
+            last_visited_city:str,
+            weight_capacity:float,
+            is_on_trip:bool
+    ):
+        self.last_visited_city = last_visited_city
+        self.weight_capacity = weight_capacity
+        self.is_on_trip = is_on_trip
+
+class TripP:
+    #class attribute
+    all_cities=(
+        'Arak', 'Ardabil', 'Miyaneh', 'Tehran', 'Mashhad'
+    )
+    def __init__(
+            self,
+            train:Train,
+            origin_city:str,
+            destination_city:str
+            ):
+        if not isinstance(train, Train):
+            raise Exception(' This input is not a train!')
+        self.train = train
+        self.origin_city = origin_city
+        self.destination_city = destination_city
+
+    def origin_city_validation(self):
+        if self.origin_city not in self.all_cities:
+            raise Exception('This input is not a verified city!')
+        return self.origin_city
+    
+    # with call method, we can call each attributes
+    def __call__(self):
+        pass 
+        
+
+train = Train('Arak', 6666, is_on_trip=True)
