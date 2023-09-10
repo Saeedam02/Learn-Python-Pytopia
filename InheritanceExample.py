@@ -22,4 +22,4 @@ class Bus(Vehicle):
         return super().fare() * 1.1
     
 bus = Bus(100, 120, 60)
-print(isins)
+print(isinstance(v, Vehicle))
