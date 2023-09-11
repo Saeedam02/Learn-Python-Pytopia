@@ -66,3 +66,18 @@ class TripP:
         
 
 train = Train('Arak', 6666, is_on_trip=True)
+
+# Example 3: Point table
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    # __str__ represents what is readable for human
+    def __str__(self) :
+        # return f"Point( {self.x}, {self.y})" :this isn't dynamic because of Point
+        return f'{self.__class__.__name__} ({self.x}, {self.y})'
+    
+    # __repr__ represents what is readable for computer, the above code is both __str__ and __repr__
+    # it is good to define __repr__ when both str and repr are same.
