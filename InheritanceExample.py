@@ -75,35 +75,35 @@ class Point:
         self.y = y
     
     # __str__ represents what is readable for human
-    def __str__(self) :
-        # return f"Point( {self.x}, {self.y})" :this isn't dynamic because of Point
-        return f'{self.__class__.__name__} ({self.x}, {self.y})'
+    # def __str__(self) :
+    #     # return f"Point( {self.x}, {self.y})" :this isn't dynamic because of Point
+    #     return f'{self.__class__.__name__} ({self.x}, {self.y})'
     
     # __repr__ represents what is readable for computer, the above code is both __str__ and __repr__
     # it is good to define __repr__ when both str and repr are same.
-
+    def __repr__(self) :
+        return f'{self.__class__.__name__} ({self.x}, {self.y})'
+    
     def __abs__(self):
         return (self.x ** 2 + self.y ** 2) ** 0.5
     
-p = Point(3, 4)
-abs(p)
-
+    # The less than function has an input and a object
+    def __lt__(self, obj):
+        return abs(self) < abs(obj)
+    
+ 
 my_points = [Point(2, 4), Point(5, 9), Point(3, 7), Point(8, 6), Point(6, 6), Point(1, 1), ]
-
-
-
-
-
-
-
-
-
-
+p = Point(3, 4)
+print(abs(p))
+print(sorted(my_points))
+print(sorted(my_points, key=lambda p:p.y)) # the sorted function sorts our list by given method.
 
 # Extra function for fun: Bubble sorting method
-
-def sort_list(l_source):
-    l=l_source.copy()
+# This sorting method has O(N^2) time complexity 
+# This sorting method has O(N) space complexity
+# If we delete copy() part and use the origin list we will have O(1) space complexity
+def sort_list(l_source): 
+    l = l_source.copy()
     for _ in range(len(l)):
         for ind in range(len(l) - 1):
             if l[ind + 1] < l[ind]:
@@ -111,3 +111,6 @@ def sort_list(l_source):
 
     return l 
 print(sort_list([1, 3 ,-5, -2, 7, -6, 2]))
+
+# This function doesn't work for a list of point because for point class we don't have less than or grater than function
+
