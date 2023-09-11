@@ -113,4 +113,13 @@ def sort_list(l_source):
 print(sort_list([1, 3 ,-5, -2, 7, -6, 2]))
 
 # This function doesn't work for a list of point because for point class we don't have less than or grater than function
+# Extra function for fun: Bubble sorting method for list of point
+def sort_list(l_source): 
+    l = l_source.copy()
+    for _ in range(len(l)):
+        for ind in range(len(l) - 1):
+            if abs(l[ind + 1]) < abs(l[ind]):
+                l[ind] , l[ind + 1] = l[ind + 1], l[ind]
 
+    return l 
+print(sort_list(my_points))
