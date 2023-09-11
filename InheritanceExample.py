@@ -81,3 +81,9 @@ class Point:
     
     # __repr__ represents what is readable for computer, the above code is both __str__ and __repr__
     # it is good to define __repr__ when both str and repr are same.
+
+    def __abs__(self):
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+    
+p = Point(3, 4)
+abs(p)
