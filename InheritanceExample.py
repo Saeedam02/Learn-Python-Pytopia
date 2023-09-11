@@ -87,3 +87,27 @@ class Point:
     
 p = Point(3, 4)
 abs(p)
+
+my_points = [Point(2, 4), Point(5, 9), Point(3, 7), Point(8, 6), Point(6, 6), Point(1, 1), ]
+
+
+
+
+
+
+
+
+
+
+
+# Extra function for fun: Bubble sorting method
+
+def sort_list(l_source):
+    l=l_source.copy()
+    for _ in range(len(l)):
+        for ind in range(len(l) - 1):
+            if l[ind + 1] < l[ind]:
+                l[ind] , l[ind + 1] = l[ind + 1], l[ind]
+
+    return l 
+print(sort_list([1, 3 ,-5, -2, 7, -6, 2]))
