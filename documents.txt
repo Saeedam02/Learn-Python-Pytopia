@@ -222,3 +222,17 @@ for this section, read from:
 https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/01%20Programming%20Paradigms.ipynb
 
 
+######################3 composition
+Compositionis an object oriented design concept that models a has a relationship. In composition, a class known as composite 
+contains an object of another class known to as component. In other words, a composite class has a component of another class.
+
+Composition allows composite classes to reuse the implementation of the components it contains. The composite class doesn’t 
+inherit the component class interface, but it can leverage its implementation.
+
+The composition relation between two classes is considered loosely coupled. That means that changes to the component class rarely 
+affect the composite class, and changes to the composite class never affect the component class. This provides better adaptability 
+to change and allows applications to introduce new requirements without affecting existing code. When looking at two competing software designs, 
+one based on inheritance and another based on composition, the composition solution usually is the most flexible. You can now look at how composition works.
+
+for more details, take a look at :
+https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/06%20Composition.ipynb
