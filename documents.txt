@@ -236,3 +236,13 @@ one based on inheritance and another based on composition, the composition solut
 
 for more details, take a look at :
 https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/06%20Composition.ipynb
+
+############ Multiple Inheritance 
+
+for this section read :
+https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/07%20Multiple%20Inheritance.ipynb
+
+Method Resolution Order
+The method resolution order (or MRO) tells Python how to search for inherited methods. This comes in handy when you’re using super() because the MRO tells you exactly where Python will look for a method you’re calling with super() and in what order.
+
+Every class has an .__mro__ attribute that allows us to inspect the order.
