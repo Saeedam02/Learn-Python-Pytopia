@@ -196,3 +196,32 @@ class RightPyramid(Square, Triangle):
     
 pyramid = RightPyramid(2, 4) # This code will face with an error caused by method resolution order
 print(pyramid.area())
+
+# Overriding
+# we can rewrite built in functions in the way that we want.
+class Cart:
+    def __init__ (self, *args):
+        self.items = list(args) # we change the args from tuple to list till we can set items.
+
+    def __len__(self):
+        return len(self.items)
+    
+    def __bool__(self):
+        return bool(self.items)
+    
+
+    def __add__(self, other):
+        new_item = self.items + other.items
+        return Cart(*new_item)
+    
+    def __getitem__(self, key):
+        return self.items[key]
+    
+    def __Setitem__(self, key, value):
+        self.items[key] = value
+
+c1 = Cart('apple')
+c2 = Cart('banana','pear')
+c3 = Cart('mango')
+# c1 + c2 -> c1.__add__(c2)
+ 
