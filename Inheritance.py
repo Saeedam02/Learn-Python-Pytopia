@@ -157,3 +157,39 @@ print(isinstance(object, type))
 #########################
 # this kind of inheritance is very complex and we need to try avoid using this as much as possible
  
+# superclass 1       superclass 2
+#    \                   /
+#     \                 /
+#      \               /
+#          subclass
+
+class Square:
+    def __init__(self, length):
+        self.length = length
+
+    def area(self):
+        return self.length ** 2
+    
+    def perimeter(self):
+        return self.length * 4
+    
+class Triangle:
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def area(self):
+        return self.base * self.height * 0.5
+
+class RightPyramid(Square, Triangle):
+    def __init__(self,base, slant_height):
+        self.base = base
+        self.slant_height = slant_height
+
+    def area(self):
+        base_area = super().area
+        perimeter = super().perimeter()
+        tri_area = perimeter * self.slant_height * 0.5
+        return tri_area + base_area
+    
+pyramid = RightPyramid(2, 4)
