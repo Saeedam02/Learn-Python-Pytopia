@@ -185,11 +185,14 @@ class RightPyramid(Square, Triangle):
     def __init__(self,base, slant_height):
         self.base = base
         self.slant_height = slant_height
+        # if we don't set the length for the square area, we will face with error, so:
+        super().__init__(base)
 
     def area(self):
-        base_area = super().area
+        base_area = super().area()
         perimeter = super().perimeter()
         tri_area = perimeter * self.slant_height * 0.5
         return tri_area + base_area
     
-pyramid = RightPyramid(2, 4)
+pyramid = RightPyramid(2, 4) # This code will face with an error caused by method resolution order
+print(pyramid.area())
