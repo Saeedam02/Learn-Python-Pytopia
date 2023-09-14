@@ -295,3 +295,14 @@ new = [str(n)  for n in my_list]
 #second way
 new = map(str, my_list)
 
+d1 = {'saeed' : 25, 'Ali' :23}
+d2 = {'Mohammad' :24}
+
+# first way of merging(not good because d1 will be changed)
+d1.update(d2)
+
+#second way
+{**d1, **d2}
+
+# third way
+d1.update('Slar' = 30)
