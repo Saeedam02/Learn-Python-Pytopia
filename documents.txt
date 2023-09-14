@@ -294,3 +294,4 @@ my_list = ['saeed', 'Ali', 2]
 new = [str(n)  for n in my_list]
 #second way
 new = map(str, my_list)
+
