@@ -268,8 +268,29 @@ s.startswith('S') -> True
 s.find('a') -> index of a is 1 # if it can't find index of a string, it return -1
 s.index('a') -> 1 # by using index, if it can't find, it will return an error
 
-s.rfind('a') -> it starts serching from right to left
+s.rfind('a') -> it starts searching from right to left
 s.rindex('a')
 
 email = 'saeed008190@gmail.com'
 email.replace('@gmail.com', '')
+# for finding and searching in a string, we can us re library:
+import rere.findall('a' , 'saeed008190@gmail.com')
+
+a = '    \t  \n  '
+a.isspace() -> True
+
+text = '  saeed  '  it has spaces in both sides 
+text.strip() -> it removes spaces from both sides.
+text.lstrip() -> removes spaces from left side.
+text.center(30,'*')
+text.ljust(30) put text to left and put spaces in the right of that.
+
+num = 23
+num.zfill(5) -> 00023
+
+
+my_list = ['saeed', 'Ali', 2]
+# first way
+new = [str(n)  for n in my_list]
+#second way
+new = map(str, my_list)
