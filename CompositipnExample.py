@@ -5,6 +5,9 @@ class Parent:
 
         self.kids = []
 
+    def __str__(self):
+        return f' parent: {self.fname} {self.lname}'
+
     def speak(self, text):
         return f'{self.fname} says: {text}'
     
@@ -21,7 +24,12 @@ class  Child(Parent):
         self.parent = parent
         self.fname = fname
         self.lname= parent.lname
-
-k = meysam.have_child('Kian')
+    
+    def __str__(self):
+        return f' {self.fname} {self.lname} child of {self.parent.fname}'
+kian = meysam.have_child('Kian')
 
 print(type(meysam))
+print(kian)
+
+# This representaion is an inheritance relationship but it's more a has a relationship( a composition)
