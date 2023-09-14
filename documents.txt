@@ -254,3 +254,22 @@ for this section, read the following part:
 https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/08%20Overriding.ipynb
 
 take a look at __bool__.
+
+################## Data type attribute and method
+
+num = 2
+num.is_integer() # is a data type method
+x = 2 + 3j
+x.real # is a data type attribute
+
+s = 'Saeed Aghamohammadi'
+s.endswith('i) -> True
+s.startswith('S') -> True
+s.find('a') -> index of a is 1 # if it can't find index of a string, it return -1
+s.index('a') -> 1 # by using index, if it can't find, it will return an error
+
+s.rfind('a') -> it starts serching from right to left
+s.rindex('a')
+
+email = 'saeed008190@gmail.com'
+email.replace('@gmail.com', '')
