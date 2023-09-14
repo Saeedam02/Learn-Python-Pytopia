@@ -306,3 +306,22 @@ d1.update(d2)
 
 # third way
 d1.update('Slar' = 30)
+
+########set
+s1 = {1,2,3}
+s2 = {1,4,5,6}
+
+s1.add(9)
+
+s1.union(s2) or s1 | s2 -> {1,2,3,4,5,6}
+# there is a small difference between union and | , for |, both side must be set but in union, second one can be any iterable.
+
+s1.intersection(s2)  or s1 & s2 -> {1}
+
+s1.difference(s2) or s1 - s2  -> {2,3}
+ 
+s.symetric_difference(s2) or s1 ^ s2 -> {2,3,4,5,6}
+
+{1,2}.issubset({1,2,3,4,5}) or {1,2} < {1,2,3,4} -> True
+
+{1,2,3,4,5,6}.issuperset({1,2,3}) -> True
