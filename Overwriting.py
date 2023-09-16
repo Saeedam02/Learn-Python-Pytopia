@@ -35,3 +35,12 @@ class Point:
 p1 = Point(1, 2, 4)
 p2 = Point(3, 2, 8)
 print(Point(3, 2, 8)+Point(1, 2, 4))
+
+# Extra information
+
+# Zip  function gives us a list of elementwise of two tuple or list untill shoetest one come over
+list(zip([1,2], [2,3,4,5])) #-> [(1,2), (2,3)]
+
+# if we want to go to end of the longest one, we need to use the following approach:
+from itertools import zip_longest
+list(zip_longest([1,2], [2,3,4,5])) #-> [(1,2), (2,3),(None,4), (None,5)]
