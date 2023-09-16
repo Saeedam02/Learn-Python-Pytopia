@@ -44,3 +44,6 @@ list(zip([1,2], [2,3,4,5])) #-> [(1,2), (2,3)]
 # if we want to go to end of the longest one, we need to use the following approach:
 from itertools import zip_longest
 list(zip_longest([1,2], [2,3,4,5])) #-> [(1,2), (2,3),(None,4), (None,5)]
+
+# it has a by default value with is None. we can change it:
+list(zip_longest([1,2], [2,3,4,5], fillvalue=0)) #-> [(1,2), (2,3),(0,4), (0,5)]
