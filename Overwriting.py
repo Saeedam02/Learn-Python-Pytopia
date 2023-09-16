@@ -47,3 +47,27 @@ list(zip_longest([1,2], [2,3,4,5])) #-> [(1,2), (2,3),(None,4), (None,5)]
 
 # it has a by default value with is None. we can change it:
 list(zip_longest([1,2], [2,3,4,5], fillvalue=0)) #-> [(1,2), (2,3),(0,4), (0,5)]
+
+# Now we can Update our class using Zip_longest
+from itertools import zip_longest
+
+class Point:
+    def __init__(self, *args):
+        self.vector = args
+
+    def __repr__(self) :
+        return f'{self.__class__.__name__} {self.vector}'
+    
+    def __abs__(self):
+        sum_value = sum([e ** 2 for e in self.vector])
+        return sum_value ** 0.5 
+    
+    # The less than function has an input and a object
+    def __lt__(self, obj):
+        return abs(self) < abs(obj)
+    
+    def __add__(self, other):
+            args = map(sum, zip_longest(self.vector, other.vector, fillvalue=0))
+            return Point(*args)
+    
+print(Point(2, 2) + Point(1, 2, 3))
