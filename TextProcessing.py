@@ -1,15 +1,24 @@
-# Write a python  program that given a string, performing the following processing:
-# Converting all letters to lower case
-# Removes numbers
-# Removes punctuations, accent marks and other diacritics
-# Removes white spaces and duble spaces
 
 text = ' Woman, Life, Freedom(1401)'
 import string
 def Preprocess(text: str)->str:
+    """
+    A python  program that given a string, performing the following processing:
+    1)Converting all letters to lower case
+    2)Removes numbers
+    3)Removes punctuations, accent marks and other diacritics
+    4)Removes white spaces and duble spaces
+    """
+    #Lower case
     text = text.lower()
+
+    #Remove Numbers
     text = ''.join(filter(lambda char: not char.isdigit(), text))
+    
+    #Remove Punctuations
     text = ''.join(filter(lambda char: char not in string.punctuation, text))
+    
+    #Remove extra spaces
     text = ''.join(text.split())
     
     return text
