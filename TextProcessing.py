@@ -109,6 +109,9 @@ class RemovePunkt(TextProcessor):
     def transform(self, text):
         return ''.join(char if not char in string.punctuation else self.replace_char for char in text)
     
+class StripAccent(TextProcessor):
+    def transform(self, text):
+        return unidecode(text)
 class TextPipline(TextProcessor):
     def __init__(self, *args):
         self.transformers = args
@@ -117,4 +120,5 @@ class TextPipline(TextProcessor):
         for tf in self.transformers:
             text = tf.trannsform(text)
         return text
+    
     
