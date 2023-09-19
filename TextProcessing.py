@@ -30,8 +30,17 @@ from unidecode import unidecode
 #########################################
 
 class ConvertCase:
+    def __init__(self, casing='lower'):
+        self.casing = casing
+    
+        
     def transform(self, text):
-        return  text.lower()
+        if self.casing == 'lower':
+            return  text.lower()
+        elif self.casing == 'upper':
+            return text.upper()
+        elif self.casing == 'title':
+            return self.title()
     
 class RemoveDigit:
     def transform(self, text):
@@ -45,3 +54,21 @@ class RemovePunkt:
     def transform(self, text):
         return ''.join(filter(lambda char: char not in string.punctuation, text))
     
+class TextPipline:
+    def __init__(self, *args):
+        self.transformers = args
+
+    def transform(self, text):
+        for tf in self.transformers:
+            text = tf.trannsform(text)
+        return text
+    
+pipe = TextPipline(
+    ConvertCase('upper'),
+    RemoveDigit(),
+    RemovePunkt(),
+    RemoveSpace(),
+)
+
+text = ' Woman, Life, Freedom(1401)'
+print(pipe.transform(text))
