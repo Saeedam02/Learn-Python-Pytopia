@@ -103,8 +103,11 @@ class RemoveSpace(TextProcessor):
         return ''.join(text.split())
     
 class RemovePunkt(TextProcessor):
+    def __init__(self, replace_char=' '):
+        self.replace_char = replace_char
+
     def transform(self, text):
-        return ''.join(filter(lambda char: char not in string.punctuation, text))
+        return ''.join(char if not char in string.punctuation else self.replace_char for char in text)
     
 class TextPipline(TextProcessor):
     def __init__(self, *args):
