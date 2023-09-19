@@ -24,3 +24,24 @@ def Preprocess(text: str)->str:
     return text
 # by using unidecode library, we can change accents in python
 from unidecode import unidecode
+
+#########################################
+######## Text processing with OOP########
+#########################################
+
+class ConvertCase:
+    def transform(self, text):
+        return  text.lower()
+    
+class RemoveDigit:
+    def transform(self, text):
+        return ''.join(filter(lambda char: not char.isdigit(), text))
+    
+class RemoveSpace:
+    def transform(self, text):
+        return ''.join(text.split())
+    
+class RemovePunkt:
+    def transform(self, text):
+        return ''.join(filter(lambda char: char not in string.punctuation, text))
+    
