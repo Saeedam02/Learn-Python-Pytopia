@@ -121,4 +121,18 @@ class TextPipline(TextProcessor):
             text = tf.trannsform(text)
         return text
     
+    def __str__(self):
+        transforms = ' -> '.join([tf.__class__.__name__ for tf in self.transformers])
+        return f'Pipeline : [{transforms}]'
     
+pipe = TextPipline(
+    ConvertCase('upper'),
+    RemoveDigit(),
+    RemovePunkt(),
+    RemoveSpace(),
+    StripAccent(),
+)
+
+text = ' Woman, Life, Freedom(1401)'
+print(pipe.transform(text))
+print(pipe)
