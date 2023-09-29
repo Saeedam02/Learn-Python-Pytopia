@@ -332,3 +332,11 @@ for details, read the following:
 https://github.com/pytopia/Python/blob/main/Python/02.%20Object%20Oriented%20Programming/10.%20Reading%20and%20Writing%20Files.ipynb
 
 for details about unicode, go to studying with alex YouTube channel and search for " unicode, in friendly terms"
+
+################ Reading files
+In Jopiter, ther is a comand for creating and writing in a file:
+{
+%%writefile myfile.txt
+this is my file
+saeed
+}
