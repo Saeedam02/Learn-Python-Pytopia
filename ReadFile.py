@@ -47,4 +47,8 @@ writer.flush()
 # All this command are better be used by "with"
 with open('myfile.txt', 'w') as file:
     file.writelines(['line one','line two'])
-    
+
+################################### Appending to a file #########################################
+
+with open('myfile.txt','a') as file:
+    file.write('\nThis is new appended content.')
