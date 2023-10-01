@@ -52,3 +52,14 @@ with open('myfile.txt', 'w') as file:
 
 with open('myfile.txt','a') as file:
     file.write('\nThis is new appended content.')
+
+
+# WE can manage two files simultaneously in with:
+with open('myfile1.txt','a') as file, open('myfile2.txt','w') as writer:
+    pass
+
+# By using mode = r+ or w+ , we can manage a file in both write and read mode
+# By using mode = rb, we can read binary files (like a png file) 
+# Fist three bytes are for PNG 
+with open('./images/pyghon,png','rb') as reader:
+    print(type(reader))
