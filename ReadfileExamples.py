@@ -28,9 +28,24 @@ def count_word(text):
 counter = {}
 with open('documents.txt') as f:
     for line in f:
+           line = preprocess_text(line)
            line_count = count_word(line)
 
            for word, word_freq in line_count.items():
                 counter[word] = counter.get(word,0) + word_freq
 
 print(counter)
+
+# Efficent way to do this:
+from collections import Counter # Counter is a object which is created for counting and updting such things
+Counter([1,1,1,3,2,5]) + Counter([1,1,1,2,3,6])
+
+def word_counter(text):
+     return Counter(text.split())
+
+counter = Counter()
+with open('documents.txt') as f:
+    for line in f:
+           line = preprocess_text(line)
+           line_count = word_counter(line)
+           counter += line_count
