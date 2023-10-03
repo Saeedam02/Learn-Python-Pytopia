@@ -23,3 +23,14 @@ def count_word(text):
         count[word] = count.get(word,0) + 1
 
     return count
+
+# This way takes huge space from memory so instead of that, we can use the following method:
+counter = {}
+with open('documents.txt') as f:
+    for line in f:
+           line_count = count_word(line)
+
+           for word, word_freq in line_count.items():
+                counter[word] = counter.get(word,0) + word_freq
+
+print(counter)
