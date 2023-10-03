@@ -49,3 +49,15 @@ with open('documents.txt') as f:
            line = preprocess_text(line)
            line_count = word_counter(line)
            counter += line_count
+# Finding most common word using Counter:
+counter.most_common()[0]
+
+# Finding most common word using max:
+max(counter) # in this way, ot works on thongs that it itterates on
+max(counter, key=counter.get) # it compares the values and return the key related the max value
+
+# Finding longest word using len:
+max(counter, key=len)
+
+# Finding shortest word using len:
+min(counter, key=len)
