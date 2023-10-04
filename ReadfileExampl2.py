@@ -23,7 +23,7 @@ with open('encoded.txt') as f:
 
 def shift_text(text: str, shift: int) -> str:
     """
-    Decode every character in text by moving 
+    Decode every character in text by moving
     shift letters in ascii characters.
     
     :param text: Input text
