@@ -63,3 +63,4 @@ with open('myfile1.txt','a') as file, open('myfile2.txt','w') as writer:
 # Fist three bytes are for PNG 
 with open('./images/pyghon,png','rb') as reader:
     print(type(reader))
+
