@@ -361,3 +361,22 @@ Put mod.py in the directory where the input script is located or the current dir
 Modify the PYTHONPATH environment variable to contain the directory where mod.py is located before starting the interpreter* Or: Put mod.py in one of the directories already contained in the PYTHONPATH variable
 
 Put mod.py in one of the installation-dependent directories, which you may or may not have write-access to, depending on the OS
+
+When we use import name_of_madule there is a name space which we can just use modulename.method.
+but when we use from name_of_madule import method_name, we can use method by itself without any name space.
+
+imort math # here math is a nmae space which we can use it.
+math.sum is available but sum isn't available by itself.
+
+from math import sum
+sum is available by itself.
+
+from math import * # it will import everything from math. THis way of imorting isn't allowed in the functions local namespace.
+
+try:
+    # Non-existent module
+    import baz
+except ImportError:
+    print('Module not found')
+
+every modules have a dunder method named __file__ which is related to the path of that module.
