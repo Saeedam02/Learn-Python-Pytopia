@@ -380,3 +380,61 @@ except ImportError:
     print('Module not found')
 
 every modules have a dunder method named __file__ which is related to the path of that module.
+
+### Module and script difference###
+a name.py file which is executed by python command ( the source file that we start executing our codes) is a script and a .py file which is used in a script file is a module. note that we can execute.
+
+inside of a modules it is usual to define classes and functions and printing something is unusual. or when we want to test a module, we can use assert.
+for instance: if we have a module that add two things together we can use the following command to test it:
+assert add(3,4) ==7
+assert add('a','c') == 'ac'
+is any of them was false, it will show an error.
+
+for preventing that error or showing those prints, we can use the __name__ which is different when we run the module or we import it in script and run it from there.
+we can use the following if statement:
+if __name__ == '__main__':
+    assert add(3,4) ==7
+    assert add('a','c') == 'ac'
+    print('Module is founded')
+
+
+for reloading a module we can use:
+import mod4 # imagine mod4 is a module.
+import importlib
+mod4 = importlib.reload(mod4)
+
+Autoreload
+You can also use an IPython extension to reload modules before executing user code. autoreload reloads modules automatically before entering the execution of code typed at the IPython prompt.
+
+This makes for example the following workflow possible:
+
+>>> %load_ext autoreload
+>>> %autoreload 2
+>>> from foo import some_function
+>>> some_function()
+# open foo.py in an editor and change some_function to return 43
+>>> some_function()
+43
+The module was reloaded without reloading it explicitly, and the object imported with from foo import ... was also updated.
+
+Usage: The following magic commands are provided:
+
+%autoreload
+Reload all modules (except those excluded by %aimport) automatically now.
+
+%autoreload 0
+Disable automatic reloading.
+
+%autoreload 1
+Reload all modules imported with %aimport every time before executing the Python code typed.
+
+%autoreload 2
+Reload all modules (except those excluded by %aimport) every time before executing the Python code typed.
+%aimport
+List modules which are to be automatically imported or not to be imported.
+
+%aimport foo
+Import module foo and mark it to be autoreloaded for %autoreload 1
+
+%aimport -foo
+Mark module foo to not be autoreloaded.
