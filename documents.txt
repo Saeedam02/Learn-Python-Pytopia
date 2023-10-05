@@ -340,3 +340,24 @@ In Jopiter, ther is a comand for creating and writing in a file:
 this is my file
 saeed
 }
+
+################################## Module search Path #######################################
+The resulting search path is accessible in the Python variable sys.path, which is obtained from a module named sys:
+
+import sys
+sys.path # note that sys.path is a list so we can append any diroctory to it.
+
+for more information, take a look at :
+https://github.com/pytopia/Python/blob/main/Python/03.%20Modular%20Programming/03%20Python%20Modules.ipynb
+
+there is an environment variable in linux named PYTHONPATH which we can assign a diroctory for it till python search there after current working diroctory
+by using the following command in terminal:
+export PYTHONPATH='./diroctory name'
+
+Thus, to ensure your module is found, you need to do one of the following:
+
+Put mod.py in the directory where the input script is located or the current directory, if interactive
+
+Modify the PYTHONPATH environment variable to contain the directory where mod.py is located before starting the interpreter* Or: Put mod.py in one of the directories already contained in the PYTHONPATH variable
+
+Put mod.py in one of the installation-dependent directories, which you may or may not have write-access to, depending on the OS
