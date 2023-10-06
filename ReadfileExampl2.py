@@ -6,7 +6,6 @@ with open('emails.txt') as f:
         if line.startswith('From: '):
             email = line.replace('From: ', '').strip() # There is a /n in replace so we use strip() to clear that 
             emails.append(email)
-        
         elif line.startswith('To: '):
              email = line.replace('To: ' '').strip()
              emails.append(email)
@@ -25,7 +24,7 @@ def shift_text(text: str, shift: int) -> str:
     """
     Decode every character in text by moving
     shift letters in ascii characters.
-    
+
     :param text: Input text
     :param shift: Shift length
     :return: Decoded text by shift
@@ -39,7 +38,7 @@ def shift_text(text: str, shift: int) -> str:
 def decode(text: str) -> str:
     """
     Decodes text by finding the right shift.
-    
+
     :param text: Input text
     :return: Decoded text
     """
