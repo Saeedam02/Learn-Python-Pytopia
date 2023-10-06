@@ -438,3 +438,13 @@ Import module foo and mark it to be autoreloaded for %autoreload 1
 
 %aimport -foo
 Mark module foo to not be autoreloaded.
+
+####### Note
+Remember that importing everything from a module isn't suggested because it will put all things of module inside of global namespace.
+from math import * ## not a good way.
+
+Remember that when we import everything from a package, it doesn't do anything and doesn't put its modules and methods inside of global namespace.
+But if we need to import some of package modules, we can use __all__ as a list inside of __init__.py file.
+Note that this behaivier is the opposite of the __all__ behaiver in modules. in modules we can put methodes and constants which we want to import.( in modules it imports all methodes.)
+
+** If a variable's name starts with _ , it doesn't appear in dir function afetr importing.
