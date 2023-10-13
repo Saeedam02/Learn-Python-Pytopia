@@ -63,3 +63,22 @@ def count_calls(func):
 @count_calls
 def say_whee():
     print("Whee!")
+
+#cache decorator: if we call a function with an argument, at another call, if the argument was the before one, it doesn't calculate again and uses a memory.
+def cache(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        if args in wrapper.memory: #check if its in our memory
+            print('reading from cache...')
+            return wrapper.memory[args] #if yes then just return in right away!
+        print('computing....')
+        output = func(*args, **kwargs)
+        wrapper.memory[args] = output #its not in our memory so lets compute and save it!
+        return output
+    wrapper.memory = {} #making an attribute for wrapper by monkey patching!
+    return wrapper
+
+@cache
+def factorial(n):
+    print(f'factorial {n}')
+    return n * factorial(n-1) if n else 1
