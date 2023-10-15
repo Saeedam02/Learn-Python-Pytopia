@@ -15,3 +15,13 @@ def infinite_sequence():
 
 gen = infinite_sequence()
 next(gen)
+
+## multi_yield
+def multi_yield():
+    yield_str = "This will print the first string"
+    yield yield_str
+    yield_str = "This will print the second string"
+    yield yield_str
+
+multi_obj = multi_yield()
+next(multi_obj)
