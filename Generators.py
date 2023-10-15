@@ -4,6 +4,17 @@ map(lambda i : i*2 ,l)
 filter(lambda i: i!= 1, l)
 zip(l, l)
 
+# we can write a zip generator by ourself:
+def zip_gen(l1, l2):
+    for i in range(len(l1)):
+        item1 = l1[i]
+        item2 = l2[i]
+        yield (item1, item2)
+
+g = zip_gen([1,2,3],[4,5,6])
+next(g)
+
+
 def my_gen(mylist): # input must be an iterable.
     for item in mylist:
         yield item**2
