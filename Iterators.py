@@ -30,11 +30,11 @@ class Counter:
     """Class to implement an iterator
     of powers of two"""
 
-    def __init__(self, max=0):
+    def __init__(self, min=0, max=0):
         self.max = max
 
     def __iter__(self):
-        self.n = 0
+        self.n = self.min
         return self
 
     def __next__(self):
