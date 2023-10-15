@@ -1,3 +1,9 @@
+# Note that functions like map or filter or zip have output in form of generator.
+l = [1, 2, 3]
+map(lambda i : i*2 ,l)
+filter(lambda i: i!= 1, l)
+zip(l, l)
+
 def my_gen(mylist): # input must be an iterable.
     for item in mylist:
         yield item**2
