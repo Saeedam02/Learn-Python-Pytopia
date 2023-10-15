@@ -59,3 +59,33 @@ next(i)
 #################################
 inf = iter(int, 1)
 next(inf)
+
+
+# Cycle
+import itertools
+my_iter = itertools.cycle([-1,1])
+
+next(my_iter)
+#it will circulate between -1 and 1.
+
+################################################
+##### Building Custom Iterators with range #####
+################################################
+class MyRange:
+    def __init__(self, start, end, step=1):
+        self.value = start
+        self.end = end
+        self.step = step
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.value >= self.end:
+            raise StopIteration
+
+        current = self.value
+        self.value += self.step
+        return current
+myrange = MyRange(5, 20, 3)
+next(myrange)
