@@ -53,3 +53,9 @@ i = iter(numbers)
 
 # Using next to get to the next iterator element
 next(i)
+
+#################################
+### Python Infinite Iterators ###
+#################################
+inf = iter(int, 1)
+next(inf)
