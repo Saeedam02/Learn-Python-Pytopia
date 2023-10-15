@@ -25,3 +25,14 @@ def multi_yield():
 
 multi_obj = multi_yield()
 next(multi_obj)
+
+
+####################################################
+## Building Generators With Generator Expressions###
+####################################################
+nums_squared_lc = [num**2 for num in range(5)]
+nums_squared_gc = (num**2 for num in range(5))
+
+# Both nums_squared_lc and nums_squared_gc look basically the same, but there’s one key difference. Can you spot it? Take a look at what happens when you inspect each of these objects:
+# nums_squared_lc ->[0, 1, 4, 9, 16]
+# nums_squared_gc -> <generator object <genexpr> at 0x7f9143561f50>
