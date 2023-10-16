@@ -53,3 +53,18 @@ nums_squared_gc = (num**2 for num in range(5))
 # Both nums_squared_lc and nums_squared_gc look basically the same, but there’s one key difference. Can you spot it? Take a look at what happens when you inspect each of these objects:
 # nums_squared_lc ->[0, 1, 4, 9, 16]
 # nums_squared_gc -> <generator object <genexpr> at 0x7f9143561f50>
+
+###################################
+##Profiling Generator Performance##
+###################################
+
+import sys
+
+nums_squared_lc = [i * 2 for i in range(10000)]
+sys.getsizeof(nums_squared_lc) #87632
+
+nums_squared_gc = (i ** 2 for i in range(10000))
+sys.getsizeof(nums_squared_gc) #128
+
+# So generators are very space efficent than other ones.
+# But in the sense of time complexity: 
