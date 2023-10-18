@@ -51,5 +51,16 @@ list(next(evens) for _ in range(5))
 odds = it.count(start=1, step=2)
 list(next(odds) for _ in range(5))
 
+# Indexing member of a list using itertools
+list(zip(it.count(), ['a', 'b', 'c'])) # ->[(0, 'a'), (1, 'b'), (2, 'c')]
+
+# Recurrence Relations
+def fibs():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+
 # for more details about itertools:
 # https://docs.python.org/3/library/itertools.html
