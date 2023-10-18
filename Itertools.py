@@ -58,6 +58,28 @@ list(zip(it.count(), ['a', 'b', 'c'])) # ->[(0, 'a'), (1, 'b'), (2, 'c')]
 all_ones = it.repeat(1)  # 1, 1, 1, 1, ...
 five_ones = it.repeat(1, 5)  # 1, 1, 1, 1, 1
 
+# Cycle
+alternating_ones = it.cycle([1, -1])  # 1, -1, 1, -1, 1, -1, ...
+
+#accumulate
+def accumulate(inputs, func):
+    itr = iter(inputs)
+    prev = next(itr)
+    for cur in itr:
+        yield prev
+        prev = func(prev, cur)
+
+import operator
+list(it.accumulate([1, 2, 3, 4, 5], operator.add)) #->[1, 3, 6, 10, 15]
+
+# first_order
+def first_order(p, q, initial_val):
+    """Return sequence defined by s(n) = p * s(n-1) + q."""
+    return it.accumulate(it.repeat(initial_val), lambda s, _: p*s + q)
+
+evens = first_order(p=1, q=2, initial_val=0)
+list(next(evens) for _ in range(5)) #-> [0, 2, 4, 6, 8]
+
 # Recurrence Relations
 def fibs():
     a, b = 0, 1
