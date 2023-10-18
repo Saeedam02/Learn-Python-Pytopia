@@ -67,4 +67,10 @@ nums_squared_gc = (i ** 2 for i in range(10000))
 sys.getsizeof(nums_squared_gc) #128
 
 # So generators are very space efficent than other ones.
-# But in the sense of time complexity: 
+# But in the sense of time complexity:
+import cProfile
+cProfile.run('sum([i * 2 for i in range(10000)])') # at list comprehension :5 function calls in 0.001 seconds
+
+cProfile.run('sum((i * 2 for i in range(10000)))') # at generator expresion : 10005 function calls in 0.002 seconds
+
+# so if CPU is important for you, use list comprehension. but if memory is important for you, use generators.
