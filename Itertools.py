@@ -43,6 +43,13 @@ def odds():
         yield n
         n += 2
 
+# Evens with itertools
+evens = it.count(step=2)
+list(next(evens) for _ in range(5))
+
+# Odds with itertools
+odds = it.count(start=1, step=2)
+list(next(odds) for _ in range(5))
 
 # for more details about itertools:
 # https://docs.python.org/3/library/itertools.html
