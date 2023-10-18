@@ -80,6 +80,18 @@ def first_order(p, q, initial_val):
 evens = first_order(p=1, q=2, initial_val=0)
 list(next(evens) for _ in range(5)) #-> [0, 2, 4, 6, 8]
 
+# second_order
+def second_order(p, q, r, initial_values):
+    """Return sequence defined by s(n) = p * s(n-1) + q * s(n-2) + r."""
+    intermediate = it.accumulate(
+        it.repeat(initial_values),
+        lambda s, _: (s[1], p*s[1] + q*s[0] + r)
+    )
+    return map(lambda x: x[0], intermediate)
+
+fibs = second_order(p=1, q=1, r=0, initial_values=(0, 1))
+list(next(fibs) for _ in range(8))# -> [0, 1, 1, 2, 3, 5, 8, 13]
+
 # Recurrence Relations
 def fibs():
     a, b = 0, 1
