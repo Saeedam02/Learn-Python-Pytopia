@@ -54,6 +54,10 @@ list(next(odds) for _ in range(5))
 # Indexing member of a list using itertools
 list(zip(it.count(), ['a', 'b', 'c'])) # ->[(0, 'a'), (1, 'b'), (2, 'c')]
 
+# Repeating using by itertools
+all_ones = it.repeat(1)  # 1, 1, 1, 1, ...
+five_ones = it.repeat(1, 5)  # 1, 1, 1, 1, 1
+
 # Recurrence Relations
 def fibs():
     a, b = 0, 1
