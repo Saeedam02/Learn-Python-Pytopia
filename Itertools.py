@@ -80,7 +80,7 @@ def first_order(p, q, initial_val):
 evens = first_order(p=1, q=2, initial_val=0)
 list(next(evens) for _ in range(5)) #-> [0, 2, 4, 6, 8]
 
-# second_order
+# t
 def second_order(p, q, r, initial_values):
     """Return sequence defined by s(n) = p * s(n-1) + q * s(n-2) + r."""
     intermediate = it.accumulate(
