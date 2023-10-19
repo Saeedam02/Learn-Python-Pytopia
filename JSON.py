@@ -17,7 +17,7 @@ data = {
 
 # encode, serialization
 output = json.dumps(data) # output's type is string.
-# dump+s is related to dumping strings
+# in dump+s and load+s, s is related to dumping strings
 
 # decode, deserialization
 decoded = json.loads(output) # decoded's type is dic.
@@ -30,3 +30,6 @@ with open("data_file.json", "w") as f:
 # decode, deserialization
 with open("data_file.json") as f:
     data = json.load(f)
+
+# Useful Keyword Arguments
+print(json.dumps(data, indent=2)) # indent =2 is good for long datasets. for shorter ones we can even use indent = 4.
