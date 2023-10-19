@@ -455,3 +455,17 @@ pip install retry
 
 # here the link of that library's github:
 https://github.com/invl/retry/blob/master/README.rst
+
+##################################
+########## Serialization #########
+##################################
+
+Python	         JSON
+
+dict	         object
+list,tuple	     array
+str	             string
+int,long,float	 number
+True	         true
+False	         false
+None	         null
