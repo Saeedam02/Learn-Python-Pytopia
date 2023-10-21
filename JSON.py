@@ -33,3 +33,15 @@ with open("data_file.json") as f:
 
 # Useful Keyword Arguments
 print(json.dumps(data, indent=2)) # indent =2 is good for long datasets. for shorter ones we can even use indent = 4.
+
+########################################################
+##### Encoding and Decoding Custom Python Objects ######
+########################################################
+
+class CustomType:
+    pass
+data = {
+    'custom_type': CustomType()
+}
+
+json.dumps(data) #->TypeError: Object of type CustomType is not JSON serializable
