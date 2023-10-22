@@ -49,6 +49,7 @@ json.dumps(data) #->TypeError: Object of type CustomType is not JSON serializabl
 ###############################
 ##### Encoding Custom Types####
 ###############################
+
 def encode_complex(z):
     if isinstance(z, complex):
         return (z.real, z.imag)
