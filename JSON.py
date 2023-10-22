@@ -45,3 +45,15 @@ data = {
 }
 
 json.dumps(data) #->TypeError: Object of type CustomType is not JSON serializable
+
+###############################
+##### Encoding Custom Types####
+###############################
+def encode_complex(z):
+    if isinstance(z, complex):
+        return (z.real, z.imag)
+    else:
+        type_name = z.__class__.__name__
+        raise TypeError(f"Object of type '{type_name}' is not JSON serializable")
+
+json.dumps(3 + 4j, default=encode_complex) #-> '[3.0, 4.0]'
